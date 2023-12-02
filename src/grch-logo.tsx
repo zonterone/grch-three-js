@@ -17,7 +17,6 @@ type GLTFResult = GLTF & {
 export function GrchLogo(props: JSX.IntrinsicElements['group']) {
   const ref = useRef<THREE.Mesh>(null)
   const mousePosition = useRef({ x: 0, y: 0 })
-  const cameraPositionZ = useRef(11)
 
   useEffect(() => {
     const setMousePositionHandler = (e: MouseEvent) => {
@@ -26,7 +25,7 @@ export function GrchLogo(props: JSX.IntrinsicElements['group']) {
         y: window.innerHeight / 2 - e.clientY,
       }
     }
-    cameraPositionZ.current = 32000 / window.innerWidth
+
     window.addEventListener('mousemove', setMousePositionHandler)
 
     return () => {
@@ -34,11 +33,10 @@ export function GrchLogo(props: JSX.IntrinsicElements['group']) {
     }
   }, [])
 
-  useFrame(({ camera }) => {
+  useFrame(() => {
     if (!ref.current) return
     ref.current.rotation.x = Math.PI / 2 + mousePosition.current.y / 2000
     ref.current.rotation.z = -(mousePosition.current.x / 2000)
-    camera.position.z = cameraPositionZ.current
   })
 
   const { nodes, materials } = useGLTF(grch) as GLTFResult
