@@ -56,5 +56,3 @@ export function GrchLogo(props: JSX.IntrinsicElements['group']) {
     </group>
   )
 }
-
-useGLTF.preload(grch)

@@ -1,4 +1,6 @@
+import { Suspense } from 'react'
 import { GrchLogo } from './grch-logo'
+import { Loader } from './loader'
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <directionalLight position={[-10, 0, 5]} intensity={1} color='gray' />
       <directionalLight position={[10, 0, 5]} intensity={1} color='gray' />
 
-      <GrchLogo />
+      <Suspense fallback={<Loader />}>
+        <GrchLogo />
+      </Suspense>
     </>
   )
 }
