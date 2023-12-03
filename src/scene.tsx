@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { GrchLogo } from './grch-logo'
 import { Loader } from './loader'
 
-function App() {
+function Scene() {
   return (
     <>
       <ambientLight intensity={8} />
@@ -23,4 +23,4 @@ function App() {
   )
 }
 
-export default App
+export default Scene
